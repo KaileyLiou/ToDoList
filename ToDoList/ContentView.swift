@@ -44,7 +44,7 @@ struct ContentView: View {
         } // end of the VStack
         
         if showNewTask {
-            NewToDoView()
+            NewToDoView(showNewTask: $showNewTask, toDoItem: ToDoItem(title: "", isImportant: false))
         }
         
         Spacer() // push up
@@ -55,4 +55,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .modelContainer(for: ToDoItem.self, inMemory: true)
 }
