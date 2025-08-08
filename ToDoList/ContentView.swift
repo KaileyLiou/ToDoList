@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showNewTask = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -17,16 +20,28 @@ struct ContentView: View {
                 Spacer() // Push left or right
                 
                 Button {
-                    
+                    withAnimation {
+                        showNewTask = true
+                    }
                 } label: {
                     Text("+")
+                        .font(.title)
+                        .fontWeight(.bold)
                 }
                 
             } // end of the HStack
             .padding()
+            Spacer() // push up
+            
         } // end of the VStack
+        
+        if showNewTask {
+            NewToDoView()
+        }
+        
         Spacer() // push up
         .padding()
+
     }
 }
 
